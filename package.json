@@ -1,0 +1,38 @@
+{
+  "name": "notes_widget",
+  "private": true,
+  "version": "0.0.1",
+  "targets": {
+    "main": {
+      "source": "src/electron/main.ts",
+      "distDir": "dist/electron",
+      "context": "electron-main",
+      "includeNodeModules": false
+    },
+    "renderer": {
+      "source": "src/renderer/index.html",
+      "distDir": "dist/renderer",
+      "context": "electron-renderer",
+      "publicUrl": ".",
+      "includeNodeModules": true
+    }
+  },
+  "main": "dist/electron/main.js",
+  "scripts": {
+    "start": "electron dist/electron/main.js",
+    "build": "parcel build"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.12",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "electron": "^38.3.0",
+    "parcel": "^2.14.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10"
+  }
+}
