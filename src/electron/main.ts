@@ -1,16 +1,21 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import path from 'path'
   
 function createWindow(){
   const win: BrowserWindow = new BrowserWindow({
-    width: 600,
-    height: 1000,
-    // transparent: true,
-    // frame: false,
+    width: 500,
+    height: 800,
+    transparent: true,
+    backgroundMaterial: 'acrylic',
+    vibrancy: 'fullscreen-ui',    // on MacOS
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
-    }
+      contextIsolation: false,
+      preload: path.join(__dirname, 'preload.ts'),
+    },
+    x: 1900,
+    y: 250,
   })
 
   win.loadFile(path.join(app.getAppPath(), '../renderer', 'index.html'))

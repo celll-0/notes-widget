@@ -1,3 +1,4 @@
+@import "tailwindcss";
 html {
   color-scheme: light dark;
   font-family: system-ui;
@@ -5,4 +6,11 @@ html {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
 }
