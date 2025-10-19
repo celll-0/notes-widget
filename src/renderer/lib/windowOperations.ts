@@ -1,22 +1,22 @@
-import { IpcRenderer } from 'electron';
+import { IElectronAPI } from '../../declarations/interface';
 
 
-export default class IpcService {
-    private ipcRenderer?: IpcRenderer;
+export default class WindowOperations {
+    private ipcRenderer?: IElectronAPI;
 
-    public send(channel: string, data: any): void {
+    public quit() {
         if (!this.ipcRenderer){
             this.ipcRenderer = this.initRenderer();
         }
         
         const ipcRenderer = this.ipcRenderer;
-        ipcRenderer.send(channel, data);
+        const res = ipcRenderer.quitApp();
     }
-
-    private initRenderer(): IpcRenderer{
+    
+    private initRenderer(): IElectronAPI {
         if (!window || !window.process || !window.require) {
             throw new Error(`Unable to require renderer process`);
         }
-        return window.require('electron').ipcRenderer;
+        return window.electron;
     }
 }
